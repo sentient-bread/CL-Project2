@@ -21,15 +21,38 @@ def subtree(word, pars):
     return sub
 
 def maketree(pars):
-    root = [word for word in pars if word[6] == 0][0]
+    root = [word for word in pars if int(word[6]) == 0][0] # { word | word \in pars, word[6] == 0}
     tree = subtree(root,pars)
     return tree
 
 def getkar(const):
     return const[0].kar
+    
+def makesent(tree):
+    def getsent(tree, sent):
+        sent[tree[0].ind] = tree[0].spel
+        for dep in tree[1:]:
+            sent.update(getsent(dep, sent))
+        return sent
 
-sentence = [[1, 'यदि',   'यदि',    'CC',  'CC',  '_',9,'vmod','_','_'],
-            [2, 'आप',   'आप',    'PRP', 'PRP', '_','7','k1','_','_'],
+    sent = getsent(tree, {})
+    
+    sentence = []
+    for i in range(len(sent)):
+        sentence.append(sent[i+1])
+    return sentence
+
+sentence = [['1', 'उसका', 'उसका', 'PRP', 'PRP', '_', '2', 'r6', '_', '_'],
+            ['2', 'विद्यारम्भ-संस्कार', 'विद्यारम्भ-संस्कार', 'NN', 'NN', '_', '7', 'k2', '_', '_'],
+            ['3', 'भी', 'भी', 'RP', 'RP', '_', '2', 'lwg__rp', '_', '_'],
+            ['4', 'खूब', 'खूब', 'QF', 'QF', '_', '5', 'nmod__adj', '_', '_'],
+            ['5', 'धूम-धाम', 'धूम-धाम', 'NN', 'NN', '_', '7', 'adv', '_', '_'],
+            ['6', 'से', 'से', 'PSP', 'PSP', '_', '5', 'lwg__psp', '_', '_'],
+            ['7', 'किया', 'किया', 'VM', 'VM', '_', '0', 'main', '_', '_'],
+            ['8', 'गया।', 'गया।', 'VAUX', 'VAUX', '_', '7', 'lwg__vaux', '_', '_']]
+"""
+[[1, 'यदि',   'यदि',    'CC',  'CC',  '_',9,'vmod','_','_'],
+            [2, 'आप',   'आप',    'PRP', 'PRP', '_',7,'k1','_','_'],
             [3, 'इस',    'इस',    'DEM', 'DEM', '_',4,'nmod_adj','_','_'],
             [4, 'उक्ति',   'उक्ति',   'NN',  'NN',  '_',7,'k7','_','_'],
             [5, 'पर',    'पर',     'PSP', 'PSP', '_',4,'lwg_psp','_','_'],
@@ -44,3 +67,4 @@ sentence = [[1, 'यदि',   'यदि',    'CC',  'CC',  '_',9,'vmod','_','_
             [14,'ज़रूर',   'ज़रूर',  'RB',   'RB',  '_',9,'ccof','_','_'],
             [15,'लगाइएगा','लगाइएगा','VM',   'VM',  '_',9,'ccof','_','_'],
             [16,'.','.','SYM','SYM','_',9,'rsym','_','_']]
+"""
