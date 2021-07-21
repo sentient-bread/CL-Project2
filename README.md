@@ -37,3 +37,9 @@ or
                [ukti            ] [viSvAs] [hEM]                                 [dAyamaND              ]
                       [is] [par]                                                           [kosTar] [ka]
 ```
+
+# Directory Structure
+* `tree.py` converts parser output to tree rep and vice versa
+* `rules.py` has the rules; imports from `tree.py`
+* `trav.py` traverses the tree rep and returns a list of questions; imports `rules.py` and `tree.py`
+* `main.py` is the heavy driver
