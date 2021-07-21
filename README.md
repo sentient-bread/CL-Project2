@@ -37,11 +37,20 @@ or
             [Apa] [ukwi           ] [viSvAsa] [hEM]                     [dAyamaNda        ]
                       [isa] [para]                                          [kostara] [kA]
 ```
+In Devanagari,
+```
+[तो                                                                          ]
+[यदि                                     ] [ज़रूर] [लगाइएगा                ] [.]
+    [करते                               ]            [चक्कर             ]
+        [आप] [उक्ति         ] [विश्वास] [हैं]                [डायमंड         ]
+                  [इस] [पर]                                [कोस्टर] [का]
+```
 
 # Directory Structure
 * `tree.py` converts parser output to tree rep and vice versa
 * `rules.py` has the rules; imports from `tree.py`
 * `trav.py` traverses the tree rep and returns a list of questions; imports `rules.py` and `tree.py`
+* `config.py` stores constant global variables and settings; is imported by all files
 * `main.py` is the heavy driver
 
 # Todo
