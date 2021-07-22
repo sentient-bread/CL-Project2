@@ -30,16 +30,17 @@ def getkar(const):
     
 def makesent(tree):
     def getsent(tree, sent):
-        sent[tree[0].ind] = tree[0].spel
+        sent[int(tree[0].ind)] = tree[0].spel
         for dep in tree[1:]:
-            sent.update(getsent(dep, sent))
+            getsent(dep, sent)
         return sent
 
     sent = getsent(tree, {})
     
     sentence = []
     for i in range(len(sent)):
-        sentence.append(sent[i+1])
+        if sent[i+1] != '':
+            sentence.append(sent[i+1])
     return sentence
 
 sentence = [['1', 'उसका', 'उसका', 'PRP', 'PRP', '_', '2', 'r6', '_', '_'],
@@ -49,7 +50,7 @@ sentence = [['1', 'उसका', 'उसका', 'PRP', 'PRP', '_', '2', 'r6', 
             ['5', 'धूम-धाम', 'धूम-धाम', 'NN', 'NN', '_', '7', 'adv', '_', '_'],
             ['6', 'से', 'से', 'PSP', 'PSP', '_', '5', 'lwg__psp', '_', '_'],
             ['7', 'किया', 'किया', 'VM', 'VM', '_', '0', 'main', '_', '_'],
-            ['8', 'गया।', 'गया।', 'VAUX', 'VAUX', '_', '7', 'lwg__vaux', '_', '_']]
+            ['8', 'गया', 'गया', 'VAUX', 'VAUX', '_', '7', 'lwg__vaux', '_', '_']]
 """
 [[1, 'यदि',   'यदि',    'CC',  'CC',  '_',9,'vmod','_','_'],
             [2, 'आप',   'आप',    'PRP', 'PRP', '_',7,'k1','_','_'],
