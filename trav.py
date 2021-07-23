@@ -23,8 +23,12 @@ def traverse(tree):
     def getques(tree, const, list):
         tree2 = copy.deepcopy(tree)
         change = findrec(const[0].ind, tree2)
+        validfuncs = ['main','k1','k1s','k2','k2p','k3','rt','rh','k5','r6','k7p','k7t','pof']
         
-        success = eval(getkar(change))(change)
+        if getkar(change) in validfuncs:
+            success = eval(getkar(change))(change)
+        else:
+            success = None
         
         if success:
             list.append(tree2)
