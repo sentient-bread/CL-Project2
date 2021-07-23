@@ -6,8 +6,17 @@ def mahakarak(replacement, const):
     for child in const[1:]:
         mahakarak('', child)
 
+def k1(const):
+    replacement_possibilities = ["कौन", "किसने"]
+    mahakarak(replacement_possibilities[0], const)
+
+
 def k1s(const):
     replacement_possibilities = ["कौन", "कैसा"]
+    mahakarak(replacement_possibilities[0], const)
+
+def k2(const):
+    replacement_possibilities = ["किसको", "क्या"]
     mahakarak(replacement_possibilities[0], const)
 
 
@@ -17,6 +26,9 @@ def k2p(const):
 
     mahakarak(replacement_possibilities[0], const)
 
+def k3(const):
+    replacement_possibilities = ["किससे", "किसके द्वारा", "किससे होकर्"]
+    mahakarak(replacement_possibilities[0], const)
 
 def rt(const):
     replacement_possibilities = ["किसके लिए", "क्यों"]
@@ -25,15 +37,26 @@ def rt(const):
 
 
 def rh(const):
-    replacement_possibilities = ["क्यों",]
+    replacement_possibilities = ["क्यों", ]
 
+    mahakarak(replacement_possibilities[0], const)
+
+
+def k5(const):
+    replacement_possibilities = ["किससे", "कहां से", "किधर से"]
     mahakarak(replacement_possibilities[0], const)
 
 
 def r6(const):
     replacement_possibilities = ["किसका", "किसके", "किसकी"]
-    # here the ambiguity will be resolved by gender and / or number and / or honorific
+    # here the ambiguity will be resolved by gender
+    # and / or number and / or honorific
 
+    mahakarak(replacement_possibilities[0], const)
+
+
+def k7s(const):
+    replacement_possibilities = ["कहां", "किधर", "किस में", "किस पर"]
     mahakarak(replacement_possibilities[0], const)
 
 
