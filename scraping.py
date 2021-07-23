@@ -5,6 +5,7 @@ import urllib.parse
 import os
 import re
 
+
 def clean_text(text):
     # takes text and gets rid of the english stuff from it
     return_text = re.sub(r'[A-Z]|[0-9]|[a-z]', "", text)
@@ -54,4 +55,24 @@ def create_relevant_data_files(data_dir_path):
     except FileExistsError:
         # file was already made
         pass
+
+
+def sentence_tokenize(text):
+    # simple tokenization using regex
+
+    tokenized_list = re.split(SENTENCE_DELIMITER, text)
+    # splits using the SENTENCE_DELIMITER
+    # each delimiter is also turned into a token itself
+    tokenized_list_final = []
+
+    for index, token in enumerate(tokenized_list):
+        if bool(re.match(SENTENCE_DELIMITER, token)):
+            # this is to weed out the elements that are the delimiters themselves
+            continue
+        if index < len(tokenized_list)-1:
+            if tokenized_list[index + 1] != "?":
+                # we don't want question sentences
+                
+                tokenized_list_final.append(token)
+    return tokenized_list_final
 
