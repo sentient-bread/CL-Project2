@@ -21,7 +21,7 @@ def k2(const):
     return 1
 
 def lwg__rp(const):
-    return None
+    return 0
 
 def nmod__adj(const):
     const[0].spel = 'कैसे'
@@ -36,13 +36,13 @@ def adv(const):
     return 1
 
 def lwg__psp(const):
-    return None
+    return 0
 
 def main(const):
-    return None
+    return 0
 
 def lwg__vaux(const):
-    return None
+    return 0
 
 def findrec(index, tree):
     if index == tree[0].ind:
@@ -59,9 +59,9 @@ def traverse(tree):
         tree2 = copy.deepcopy(tree)
         change = findrec(const[0].ind, tree2)
         
-        y = eval(getkar(change))(change)
+        success = eval(getkar(change))(change)
         
-        if y != None:
+        if success:
             list.append(tree2)
         for child in const[1:]:
             getques(tree, child, list)
