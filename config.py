@@ -1,0 +1,1 @@
+SEED_URL = "http://premchand.co.in/story/pariksha"
