@@ -51,10 +51,12 @@ In Devanagari,
 * `rules.py` has the rules; imports from `tree.py`
 * `trav.py` traverses the tree rep and returns a list of questions; imports `rules.py` and `tree.py`
 * `config.py` stores constant global variables and settings; is imported by all files
+* `scraping.py` will have the functions to parse a page and put it in a text file. imports from `config.py` and will be imported by `main.py`
 * `main.py` is the heavy driver
 
 # Todo
 - [x] Function from tree rep to sentence
 - [ ] Rules.py functions
+- [ ] `scraping.py` functions
 - [x] Traversal (tree rep -> replace -> sentence)
 - [ ] Main
