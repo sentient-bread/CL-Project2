@@ -40,7 +40,7 @@ def scrape_page(url, corpus_file):
     return output_text_cleaned
 
 def create_relevant_data_files(data_dir_path):
-
+    
     try:
         os.mkdir(data_dir_path)
     except FileExistsError:
@@ -49,13 +49,16 @@ def create_relevant_data_files(data_dir_path):
     
 
     file_path = os.path.join(data_dir_path, "corpus.txt")
-
+    print("file path", file_path)
+    
     try:
-        os.mknod(file_path)
+        f = open(file_path, "x")
+        f.close()
     except FileExistsError:
         # file was already made
         pass
-
+        
+    return file_path
 
 def sentence_tokenize(text):
     # simple tokenization using regex
