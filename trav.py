@@ -2,13 +2,6 @@ from tree import *
 from rules import *
 import copy
 
-tree = maketree(sentence)
-
-def emp(const):
-    const[0].spel = ''
-    for child in const[1:]:
-        emp(child)
-
 def findrec(index, tree):
     if index == tree[0].ind:
         return tree
