@@ -3,7 +3,6 @@ from config import *
 from trav import *
 
 story_name = input("Enter story name: ")
-SEED_URL += story_name
 
 data_dir_path = input("Enter data dir path: ")
 corpus_file_path = create_relevant_data_files(data_dir_path)
@@ -11,7 +10,7 @@ corpus_file = open(corpus_file_path,"w")
 
 print("Scraping", story_name+'...')
 
-text = scrape_page(SEED_URL, corpus_file)
+text = scrape_page(urllib.parse.urljoin(SEED_URL,story_name), corpus_file)
 corpus_file.close()
 
 print(story_name, "scraped.")
