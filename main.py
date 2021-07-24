@@ -6,7 +6,7 @@ story_name = input("Enter story name: ")
 
 data_dir_path = input("Enter data dir path: ")
 corpus_file_path = create_relevant_data_files(data_dir_path)
-corpus_file = open(corpus_file_path,"w")
+corpus_file = open(corpus_file_path, "w")
 
 print("Scraping", story_name+'...')
 
@@ -34,4 +34,4 @@ for sentence in sentences:
 print("Questions generated.")
 
 with open("questions.txt","w") as question_file:
-    question_file.write('\n'.join([' '.join(q) for q in questions]))
+    question_file.write('\n'.join([' '.join(q)+'?' if q != "" else "" for q in questions ]))

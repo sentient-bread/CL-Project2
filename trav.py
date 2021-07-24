@@ -15,7 +15,11 @@ def findrec(index, tree):
 def traverse(tree):
     def getques(tree, const, list):
         tree2 = copy.deepcopy(tree)
-        change = findrec(const[0].ind, tree2)
+        for t in tree2:
+            change = findrec(const[0].ind, t)
+            if (change != None):
+                break
+                
         validfuncs = ['main','k1','k1s','k2','k2p','k3','rt','rh','k5','r6','k7p','k7t','pof']
         
         if getkar(change) in validfuncs:
@@ -29,5 +33,6 @@ def traverse(tree):
             getques(tree, child, list)
     
     list = []
-    getques(tree, tree, list)
+    for t in tree:
+        getques(tree, t, list)
     return list
