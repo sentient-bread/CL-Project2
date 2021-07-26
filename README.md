@@ -2,9 +2,10 @@
 Question generation from stories in Hindi
 
 # Tree Structure
-* The tree is represented in Python by a nested list.
-* The first item in the list is the root of the tree.
+* The tree is represented in Python by a list of nested lists.
+* The first item in each list is the root of a tree.
 * This is followed by the lists representing the subtrees of each of its children.
+* When a sentence has a single root, the list is a singleton list having only one tree.
 
 For example, the sentence `यदि आप इस उक्ति पर विश्वास करते हैं तो कोस्टर डयमंड का चक्कर ज़रूर लगाइएगा।` is parsed as follows:
 ```
@@ -27,11 +28,11 @@ For example, the sentence `यदि आप इस उक्ति पर वि
 ```
 and its tree representation is
 ```
-[तो, [यदि, [करते, [आप], [उक्ति, [इस], [पर]], [विश्वास], [हैं]]], [ज़रूर], [लगाइएगा, [चक्कर, [डायमंड, [कोस्टर], [का]]]], [.]]
+[[तो, [यदि, [करते, [आप], [उक्ति, [इस], [पर]], [विश्वास], [हैं]]], [ज़रूर], [लगाइएगा, [चक्कर, [डायमंड, [कोस्टर], [का]]]], [.]]]
 ```
 or
 ```
-[wo                                                                                              ]
+[[wo                                                                                              ]]
     [yaxi                                           ] [jZarUra] [lagAiegA                   ] [.]
         [karawe                                    ]                [cakkara               ]
             [Apa] [ukwi           ] [viSvAsa] [hEM]                     [dAyamaNda        ]
@@ -39,7 +40,7 @@ or
 ```
 In Devanagari,
 ```
-[तो                                                                             ]
+[[तो                                                                             ]]
    [यदि                                     ] [ज़रूर] [लगाइएगा                ] [.]
        [करते                               ]            [चक्कर             ]
            [आप] [उक्ति         ] [विश्वास] [हैं]                [डायमंड         ]
@@ -57,6 +58,6 @@ In Devanagari,
 # Todo
 - [x] Function from tree rep to sentence
 - [ ] Rules.py functions
-- [ ] `scraping.py` functions
+- [x] `scraping.py` functions
 - [x] Traversal (tree rep -> replace -> sentence)
-- [ ] Main
+- [x] Main
