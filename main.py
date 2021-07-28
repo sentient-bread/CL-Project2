@@ -27,8 +27,7 @@ for sentence in sentences:
         ql = traverse(tree)
         qs = list(map(makesent, ql))
         questions += qs + [""]
-    except:
-        print("Error found in sentence", sentence)
+    except Exception as e:
         pass
 
 print("Questions generated.")

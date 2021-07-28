@@ -36,10 +36,25 @@ def traverse(tree):
             getques(tree, child, list)
     
     list = []
-    for t in tree:
+    for i, t in enumerate(tree):
         r = findkar('nmod__relc', t)
         if r != None:
             mahakarak('', r)
-        if t[0].pos == 'VM':
+        if t[0].pos == 'VM':                        # if the root is a finite verb
             getques(tree, t, list)
+        elif t[0].pos == 'CC' and len(t) >= 3:      # else if the root is conjunction
+            tree1 = copy.deepcopy(tree)
+            tree2 = copy.deepcopy(tree) # we need two copies as python uses references
+            
+            t1 = tree1[i]
+            t2 = tree2[i]               # copies of t in tree1 and tree2
+            
+            t1[0].spel = ''
+            mahakarak('',t1[2])
+            getques(tree1, t1[1], list) # eliminating second clause and getting qs of first
+            
+            t2[0].spel = ''
+            mahakarak('',t2[1])
+            getques(tree2, t2[2], list) # eliminating first clause and getting qs of second
+            
     return list

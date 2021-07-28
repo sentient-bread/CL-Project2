@@ -24,8 +24,8 @@ def maketree(pars):
     """
     Converts dependency parser output to tree representation.
     """
-    root = [word for word in pars if int(word[6]) == 0][0] # { word | word \in pars, word[6] == 0}
-    tree = subtree(root,pars)
+    root = [word for word in pars if int(word[6]) == 0] # { word | word \in pars, word[6] == 0}
+    tree = [subtree(r,pars) for r in root]
     return tree
 
 def getkar(const):
