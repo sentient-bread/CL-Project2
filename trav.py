@@ -20,7 +20,7 @@ def traverse(tree):
             if (change != None):
                 break
                 
-        validfuncs = ['main','k1','k1s','k2','k2p','k3','rt','rh','k5','r6','k7p','k7t','pof']
+        validfuncs = ['main','k1','k1s','k2','k2p','k3','rt','rh','k5','r6','k7p','k7t','pof', 'nmod__adj']
         
         if getkar(change) in validfuncs:
             success = eval(getkar(change))(change)
@@ -34,5 +34,9 @@ def traverse(tree):
     
     list = []
     for t in tree:
-        getques(tree, t, list)
+        r = findkar('nmod__relc', t)
+        if r != None:
+            mahakarak('', r)
+        if t[0].pos == 'VM':
+            getques(tree, t, list)
     return list

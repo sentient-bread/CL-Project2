@@ -1,15 +1,29 @@
 from functools import partial
 
-def findpsp(const):
+def findkar(kar, const):
+    """
+    recursively looks for
+    karaka kar in constituent const
+    """
+    if const[0].kar == kar:
+        return const
     for child in const[1:]:
-        if child[0].kar == 'lwg__psp':
-            return child[0].spel
-    for child in const[1:]:
-        f = findpsp(child)
+        f = findkar(kar, child)
         if f != None:
             return f
     return None
 
+def findpsp(const):
+    """
+    looks for karak chihna
+    in dependents of head
+    only (non-recursive)
+    """
+    for child in const[1:]:
+        if child[0].kar == 'lwg__psp':
+            return child[0].spel
+    return None
+        
 def mahakarak(replacement, const):
     const[0].spel = replacement
     for child in const[1:]:
@@ -25,8 +39,15 @@ def k1(const):
 
 
 def k1s(const):
-    replacement_possibilities = ["कौन", "कैसा"]
-    mahakarak(replacement_possibilities[0], const)
+    replacement_possibilities = ["कौन", "कैसा", "कैसे", "कैसी"]
+    if const != [] and const[0].spel != "" and const[0].pos = 'JJ':
+        repl = "कैस" + const[0].spel[-1]
+        if repl in replacement_possibilities:
+            mahakarak(repl, const)
+        else:
+            mahakarak("कैसा", const)
+    else:
+        mahakarak(replacement_possibilities[0], const)
     return True
 
 def k2(const):
@@ -80,7 +101,7 @@ def r6(const):
     suff = findpsp(const)
     if suff != None:
         mahakarak('किस'+suff, const)
-    else:
+    elif const != [] and const[0].spel != "":
         gen = const[0].spel[-1]
         mahakarak('किसक'+gen, const)
     return True
@@ -114,4 +135,20 @@ def pof(const):
     mahakarak(replacement_possibilities[0], const)
     return True
 
+def nmod__adj(const):
+    replacement_possibilities = ["कैसा", "कैसे", "कैसी"]
+    # if the gender can be determined from the adjective,
+    # use it to find which possibility to use
+    # else use masc कैसा by default
+    if const != [] and const[0].spel != "":
+        if const[0].pos == 'JJ':
+            repl = "कैस" + const[0].spel[-1]
+            if repl in replacement_possibilities:
+                mahakarak(repl, const)
+            else:
+                mahakarak("कैसा", const)
+        elif const[0].pos == 'QC' and const[0].spel != 'एक':
+            mahakarak("कितने", const)
+    return True
+    
 emp = partial(mahakarak, '')
