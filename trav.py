@@ -13,6 +13,9 @@ def findrec(index, tree):
         return None
 
 def traverse(tree):
+    """
+    Generates a list of questions for the whole tree.
+    """
     def getques(tree, const, list):
         tree2 = copy.deepcopy(tree)
         for t in tree2:

@@ -74,6 +74,7 @@ def k3(const):
         mahakarak(replacement_possibilities[0], const)
     return True
 
+
 def rt(const):
     replacement_possibilities = ["किसके लिए", "क्यों"]
 
