@@ -21,17 +21,23 @@ def subtree(word, pars):
     return sub
 
 def maketree(pars):
-    roots = [word for word in pars if int(word[6]) == 0] # { word | word \in pars, word[6] == 0}
-    tree = [subtree(root,pars) for root in roots]
+    """
+    Converts dependency parser output to tree representation.
+    """
+    root = [word for word in pars if int(word[6]) == 0] # { word | word \in pars, word[6] == 0}
+    tree = [subtree(r,pars) for r in root]
     return tree
 
 def getkar(const):
     return const[0].kar
     
 def makesent(tree):
-    def getsent(t, sent):
-        sent[int(t[0].ind)] = t[0].spel
-        for dep in t[1:]:
+    """
+    Converts tree representation to list of words.
+    """
+    def getsent(tree, sent):
+        sent[int(tree[0].ind)] = tree[0].spel
+        for dep in tree[1:]:
             getsent(dep, sent)
         return sent
 

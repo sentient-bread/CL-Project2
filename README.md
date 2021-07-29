@@ -1,6 +1,20 @@
 # CL-Project2
 Question generation from stories in Hindi
 
+# Instructions to run
+
+```
+git clone https://github.com/sentient-bread/CL-Project2
+cd CL-Project2
+pip install -r requirements.txt
+python3 main.py
+```
+
+You have to provide the directory to be used as the data directory.
+`main.py` will ask if you wish to scrape urls from a file `<data>/url_file.txt`.
+This file should have a list of urls only separated by newlines.
+You can also enter a story name if you wish to scrape only one page.
+
 # Tree Structure
 * The tree is represented in Python by a list of nested lists.
 * The first item in each list is the root of a tree.
@@ -53,11 +67,4 @@ In Devanagari,
 * `trav.py` traverses the tree rep and returns a list of questions; imports `rules.py` and `tree.py`
 * `config.py` stores constant global variables and settings; is imported by all files
 * `scraping.py` will have the functions to parse a page and put it in a text file. imports from `config.py` and will be imported by `main.py`
-* `main.py` is the heavy driver
-
-# Todo
-- [x] Function from tree rep to sentence
-- [ ] Rules.py functions
-- [x] `scraping.py` functions
-- [x] Traversal (tree rep -> replace -> sentence)
-- [x] Main
+* `main.py` is the driver
