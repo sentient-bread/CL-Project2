@@ -24,6 +24,9 @@ def scrape_page(url, corpus_file):
         raise ValueError("Invalid url provided")
     soup_for_page = BeautifulSoup(response.content, 'html.parser')
 
+    page_title = soup_for_page.find_all('title')[0]
+    print(f"Scraping {page_title.get_text()}")
+
     all_paragraphs = soup_for_page.find_all('p')
     # parsed_url = urllib.parse.urlparse(url)
     output_text = ""
