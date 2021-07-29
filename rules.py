@@ -159,4 +159,8 @@ def nmod__adj(const):
                 mahakarak("कैसा", const)
         elif const[0].pos == 'QC' and const[0].spel != 'एक':
             mahakarak("कितने", const)
+        elif const[0].pos == 'DEM':
+            mahakarak("कौनसा", const)
+        else:
+            return None
     return True
