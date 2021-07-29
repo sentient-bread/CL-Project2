@@ -2,6 +2,7 @@ from scraping import *
 from config import *
 from trav import *
 import os
+import sys
 
 data_dir_path = input("Enter data dir path: ")
 corpus_file_path = ""
@@ -39,14 +40,22 @@ elif corpus_given == "n" or corpus_given == "N":
         for url in url_list:
             if url == "":
                 continue
-            text += scrape_page(url, corpus_file)
+            try:
+                text += scrape_page(url, corpus_file)
+            except ValueError:
+                print(f"Invalid url in url file: {url}")
+                sys.exit()
+
 
     elif choice == "n" or choice == "N":
         story_name = input("Enter story name: ")
         print("Scraping", story_name+'...')
-
-        text = scrape_page(urllib.parse.urljoin(SEED_URL,story_name), corpus_file)
-        print(story_name, "scraped.")
+        try:
+            text = scrape_page(urllib.parse.urljoin(SEED_URL,story_name), corpus_file)
+            print(story_name, "scraped.")
+        except ValueError:
+            print("The story name isn't on the website.")
+            sys.exit()
 
         corpus_file.close()
 
