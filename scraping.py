@@ -20,6 +20,8 @@ def scrape_page(url, corpus_file):
     # that is an assumption
 
     response = requests.get(url)
+    if response.status_code == 404:
+        raise ValueError("Invalid url provided")
     soup_for_page = BeautifulSoup(response.content, 'html.parser')
 
     all_paragraphs = soup_for_page.find_all('p')
