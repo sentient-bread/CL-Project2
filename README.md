@@ -1,19 +1,75 @@
 # CL-Project2
 Question generation from stories in Hindi
 
-# Instructions to run
+# Instructions to Run
 
+To run the code, please execute the following instructions:
 ```
-git clone https://github.com/sentient-bread/CL-Project2
-cd CL-Project2
-pip install -r requirements.txt
-python3 main.py
+> git clone https://github.com/sentient-bread/CL-Project2
+> cd CL-Project2
+> pip install -r requirements.txt
+> python3 main.py
 ```
 
-You have to provide the directory to be used as the data directory.
+You have to provide the name of the directory to be used as the data directory.
 `main.py` will ask if you wish to scrape urls from a file `<data>/url_file.txt`.
 This file should have a list of urls only separated by newlines.
 You can also enter a story name if you wish to scrape only one page.
+
+# Sample Output
+### Generating Questions from One Story
+```
+> python3 main.py
+Enter data dir path: data
+Will you provide corpus? [y/n] n
+file path data/corpus.txt
+Get url from file? [y/n] n
+Enter story name: pariksha
+Scraping pariksha...
+Scraping परीक्षा
+pariksha scraped.
+Data tokenised.
+Generating questions...
+Questions generated.
+```
+The scraped story is stored in `data/corpus.txt`, and the questions in `questions.txt`.
+
+### Generating Questions from Multiple Stories
+In this case, the (complete) urls for all the stories must be stored in a file named `url_file.txt` in the `data` directory.
+```
+> python3 main.py
+Enter data dir path: data
+Will you provide corpus? [y/n] n
+file path data/corpus.txt
+Get url from file? [y/n] y
+Scraping गृह दाह
+Scraping महातीर्थ
+Scraping मंत्र
+Scraping परीक्षा
+Scraping दिल की रानी
+Scraping आभूषण
+Scraping विस्मृति
+Scraping शांति
+Scraping ज्वालामुखी
+Scraping गरीब की हाय
+Data tokenised.
+Generating questions...
+Questions generated.
+```
+The scraped stories are concatenated and stored in `data/corpus.txt`, and the questions in `questions.txt`.
+
+### Generating Questions from a Corpus
+The corpus must be in the same directory as the code.
+```
+python3 main.py
+Enter data dir path: data
+Will you provide corpus? [y/n] y  
+corpus file name? corpus.txt
+Data tokenised.
+Generating questions...
+Questions generated.
+```
+As before, the questions are in `questions.txt` in the same directory.
 
 # Tree Structure
 * The tree is represented in Python by a list of nested lists.
