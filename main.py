@@ -8,7 +8,7 @@ data_dir_path = input("Enter data dir path: ")
 corpus_file_path = ""
 corpus_file = None
 
-corpus_given = input("Will you provide corpus? y/n ")
+corpus_given = input("Will you provide corpus? [y/n] ")
 corpus_file_name = ""
 corpus_file_path = ""
 text = ""
@@ -25,7 +25,7 @@ elif corpus_given == "n" or corpus_given == "N":
 
     corpus_file = open(corpus_file_path, "w")
 
-    choice = input("Get url from file? y/n? ")
+    choice = input("Get url from file? [y/n] ")
 
     url_file_content = ""
     url_list = []
