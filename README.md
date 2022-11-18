@@ -1,7 +1,12 @@
 # CL-Project2
 Question generation from stories in Hindi
 
-# Instructions to Run
+# Instructions to run
+You must first install iscnlp's
+[`pos-tagger`](https://bitbucket.org/iscnlp/pos-tagger/src/master/), and
+[`parser`](https://bitbucket.org/iscnlp/parser/src/master/).
+Then, clone the repository and install the rest of the dependencies from the
+`requirements.txt` to continue.
 
 To run the code, please execute the following instructions:
 ```
